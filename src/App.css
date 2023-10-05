@@ -1,38 +1,374 @@
-.App {
-  text-align: center;
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f2f2f2;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html.has-scroll-smooth {
+  overflow: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+html.has-scroll-dragging {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-.App-header {
-  background-color: #282c34;
+.has-scroll-smooth body {
+  overflow: hidden;
+}
+
+.has-scroll-smooth [data-scroll-container] {
   min-height: 100vh;
+}
+
+[data-scroll-direction="horizontal"] [data-scroll-container] {
+  height: 100vh;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+[data-scroll-direction="horizontal"] [data-scroll-section] {
+  display: inline-block;
+  vertical-align: top;
+  white-space: nowrap;
+  height: 100%;
+}
+
+.c-scrollbar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 11px;
+  height: 100%;
+  transform-origin: center right;
+  transition: transform 0.3s, opacity 0.3s;
+  opacity: 0;
+}
+
+.c-scrollbar:hover {
+  transform: scaleX(1.45);
+}
+
+.c-scrollbar:hover,
+.has-scroll-scrolling .c-scrollbar,
+.has-scroll-dragging .c-scrollbar {
+  opacity: 1;
+}
+
+[data-scroll-direction="horizontal"] .c-scrollbar {
+  width: 100%;
+  height: 10px;
+  top: auto;
+  bottom: 0;
+  transform: scaleY(1);
+}
+
+[data-scroll-direction="horizontal"] .c-scrollbar:hover {
+  transform: scaleY(1.3);
+}
+
+.c-scrollbar_thumb {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: black;
+  opacity: 0.5;
+  width: 7px;
+  border-radius: 10px;
+  margin: 2px;
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+.has-scroll-dragging .c-scrollbar_thumb {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}
+[data-scroll-direction="horizontal"] .c-scrollbar_thumb {
+  right: auto;
+  bottom: 0;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding-top: 1rem;
+  padding: 1rem 0;
+  display: flex;
+  width: 100%;
+  background-color: #f2f2f2;
+}
+
+.navbar a {
+  text-decoration: none;
+  margin: 0 1rem;
+  color: black;
+  font-size: 1.2rem;
+}
+
+.sec {
+  margin: 0 auto;
+  padding-top: 10%;
+}
+
+.home {
   display: flex;
   flex-direction: column;
+  margin-bottom: 8rem;
+}
+
+.profile {
+  max-width: 1116px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 15rem;
+}
+
+.profile-text {
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.profile-text h1 {
+  color: #e52929;
+}
+
+.profile-text p {
+  font-size: 1.5rem;
+}
+
+.profile-text a {
+  width: fit-content;
+}
+
+.profile-picture {
+  margin: auto;
+}
+
+.profile-picture img {
+  max-width: 472px;
+}
+
+.linkedIn {
+  width: 51px;
+}
+
+.stack {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  flex-wrap: wrap;
+  margin: 0 1rem;
+}
+
+.stack p {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-right: 1rem;
+}
+
+.stack img {
+  height: 73px;
+  margin: 0 5px;
+}
+
+.about-me {
+  display: flex;
+  flex-direction: column;
+  padding-top: 8rem;
+  margin-bottom: 15rem;
+}
+
+.ab-sec {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  max-width: 1120px;
+}
+
+.ab-sec img {
+  max-width: 427px;
+  margin-right: 2rem;
+  border-radius: 10px;
+  margin: auto;
+}
+
+.about-me-text {
+  max-width: 615px;
+}
+
+.about-me-text p {
+  font-size: 1.8rem;
+}
+
+.about-me-img {
+  margin-right: 2rem;
+}
+
+.project {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  max-width: 1250px;
+  margin-bottom: 15rem;
+}
+
+.projects .main-heading {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.project-img img {
+  max-width: 671px;
+}
+
+.project-text {
+  max-width: 542px;
+}
+
+.project-text h1 {
+  color: #e52929;
+}
+
+.project-text p {
+  font-size: 1.5rem;
+}
+
+
+.navbar nav {
+  display: flex;
+}
+
+.resume {
+  width: fit-content;
+  height: fit-content;
+  background-color: #e52929;
+  border-radius: 10px;
+}
+
+.resume a {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.nav-btn {
+  padding: 5px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--textColor);
+  visibility: hidden;
+  opacity: 0;
+  font-size: 1.8rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media only screen and (max-width: 1024px) {
+  .nav-btn {
+    visibility: visible;
+    opacity: 1;
   }
-  to {
-    transform: rotate(360deg);
+
+  .navbar nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    color: black;
+    background-color:#f2f2f2;
+    transition: 1s;
+    transform: translateY(-100vh);
+  }
+
+  .navbar .responsive_nav {
+    transform: none;
+  }
+
+  nav .nav-close-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+  }
+
+  nav a {
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 971px) {
+  .home {
+    margin-bottom: 5rem;
+  }
+
+  .profile {
+    margin-bottom: 5rem;
+  }
+}
+@media only screen and (max-width: 1081px) {
+  .ab-sec {
+    text-align: center;
+  }
+
+  .about-me-img {
+    margin: auto;
+  }
+
+  .about-me-text {
+    margin: auto;
+  }
+}
+
+@media only screen and (max-width: 1212px) {
+  .project {
+    text-align: center;
+  }
+
+  .project-img {
+    margin: auto;
+  }
+
+  .project-text {
+    margin: auto;
+  }
+}
+
+@media only screen and (max-width: 671px) {
+  .project-img img {
+    max-width: 100%;
+  }
+}
+
+@media only screen and (max-width: 615px) {
+  .about-me-text {
+    max-width: 100%;
+  }
+}
+
+@media only screen and (max-width: 472px) {
+  .profile-picture img {
+    max-width: 100%;
+  }
+}
+
+@media only screen and (max-width: 472px) {
+  .ab-sec img {
+    max-width: 100%;
   }
 }
