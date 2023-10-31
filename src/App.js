@@ -141,7 +141,7 @@ function App() {
           <div className="project">
             <div className="project-img">
               <img
-                src={require("./images/TUPs-Delivery-Service-ss.PNG")}
+                src={require("./images/tups.png")}
                 alt=""
               />
             </div>
